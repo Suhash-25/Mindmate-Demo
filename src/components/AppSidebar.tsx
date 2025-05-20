@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { MessageCircle, Calendar, Heart, Sun, Moon } from 'lucide-react';
+import { MessageCircle, Calendar, Heart, Sun, Moon, LogOut } from 'lucide-react';
 import {
   Sidebar,
   SidebarContent,
@@ -12,11 +12,14 @@ import {
   useSidebar,
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/context/AuthContext';
 
 const AppSidebar = () => {
-  const { collapsed } = useSidebar();
+  const { state } = useSidebar();
+  const collapsed = state === "collapsed";
   const location = useLocation();
   const currentPath = location.pathname;
+  const { logout } = useAuth();
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
     cn(
@@ -27,7 +30,7 @@ const AppSidebar = () => {
     );
 
   return (
-    <Sidebar className={collapsed ? 'w-[60px]' : 'w-[220px]'} collapsible>
+    <Sidebar className={collapsed ? "w-[60px]" : "w-[220px]"} collapsible="icon">
       <SidebarTrigger className="m-2 self-end" />
 
       <div className="flex items-center justify-center py-6">
@@ -44,7 +47,7 @@ const AppSidebar = () => {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <NavLink to="/" end className={getNavCls}>
+              <NavLink to="/chat" end className={getNavCls}>
                 <MessageCircle className="h-5 w-5 mr-2" />
                 {!collapsed && <span>Chat</span>}
               </NavLink>
@@ -71,9 +74,17 @@ const AppSidebar = () => {
         </SidebarMenu>
       </SidebarContent>
 
-      <div className="mt-auto mb-4 px-2">
+      <div className="mt-auto mb-4 px-2 space-y-2">
         <button className="w-full flex items-center justify-center py-2 rounded-lg hover:bg-muted/80 transition-colors">
           <Sun className="h-5 w-5" />
+        </button>
+        
+        <button 
+          onClick={logout}
+          className="w-full flex items-center justify-center py-2 rounded-lg hover:bg-destructive/10 text-destructive transition-colors"
+        >
+          <LogOut className="h-5 w-5" />
+          {!collapsed && <span className="ml-2">Logout</span>}
         </button>
       </div>
     </Sidebar>
