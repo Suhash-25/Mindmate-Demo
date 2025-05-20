@@ -5,8 +5,9 @@ import { useAuth } from '@/context/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Heart, Mail, Lock, Loader2 } from 'lucide-react';
+import { Brain, Mail, Lock, Loader2 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import BrainLogo from '@/components/BrainLogo';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -24,16 +25,31 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#121212] bg-[linear-gradient(to_bottom,rgba(0,0,0,0),rgba(0,0,0,0.8))]">
-      <div className="w-full max-w-md animate-fade-in p-4">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-purple-500 rounded-full filter blur-3xl opacity-10 animate-pulse-gentle"></div>
+        <div className="absolute bottom-1/3 right-1/4 w-40 h-40 bg-gold-500 rounded-full filter blur-3xl opacity-10 animate-pulse-gentle" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-36 h-36 bg-purple-600 rounded-full filter blur-3xl opacity-10 animate-pulse-gentle" style={{ animationDelay: '2s' }}></div>
+      </div>
+
+      <div className="w-full max-w-md animate-fade-in p-4 z-10">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-primary/10 rounded-full mb-4 glass-morphism">
-            <Heart className="h-8 w-8 text-primary" />
+          <div className="inline-block mb-4">
+            <BrainLogo size={80} />
           </div>
-          <h1 className="text-3xl font-bold font-display mb-2 text-gradient">Welcome Back</h1>
-          <p className="text-muted-foreground">Sign in to continue your journey with MindMate</p>
+          <h1 className="text-3xl font-bold font-display mb-2 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-purple-500 to-gold-500 animate-pulse-gentle">
+            Welcome to MindMate
+          </h1>
+          <p className="text-gold-300">Your AI companion for emotional wellbeing</p>
         </div>
 
-        <Card className="glass-morphism border-none shadow-lg">
+        <Card className="neo-blur border-none shadow-lg shadow-purple-900/20">
+          <div className="absolute inset-0 rounded-xl overflow-hidden">
+            <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-gold-500 to-transparent"></div>
+            <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-purple-500 to-transparent"></div>
+            <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-gold-500 to-transparent"></div>
+          </div>
+          
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl font-medium text-white">Sign In</CardTitle>
             <CardDescription className="text-gray-400">
@@ -44,11 +60,11 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
                 <div className="relative">
-                  <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <Mail className="absolute left-3 top-3 h-4 w-4 text-purple-400" />
                   <Input
                     type="email"
                     placeholder="Email"
-                    className="pl-10 bg-white/5 border-white/10 placeholder:text-gray-500"
+                    className="pl-10 bg-black/30 border-white/10 placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500/20"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -57,11 +73,11 @@ const Login = () => {
               </div>
               <div className="space-y-2">
                 <div className="relative">
-                  <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <Lock className="absolute left-3 top-3 h-4 w-4 text-purple-400" />
                   <Input
                     type="password"
                     placeholder="Password"
-                    className="pl-10 bg-white/5 border-white/10 placeholder:text-gray-500"
+                    className="pl-10 bg-black/30 border-white/10 placeholder:text-gray-500 focus:border-purple-500 focus:ring-purple-500/20"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -70,7 +86,7 @@ const Login = () => {
               </div>
               <Button 
                 type="submit" 
-                className="w-full bg-primary hover:bg-primary/90"
+                className="w-full bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white border border-purple-700/50 shadow-lg shadow-purple-900/20"
                 disabled={isLoading}
               >
                 {isLoading ? (
@@ -98,7 +114,7 @@ const Login = () => {
             <Button 
               type="button" 
               variant="outline" 
-              className="w-full border-white/10 hover:bg-white/10"
+              className="w-full border-gold-900/20 bg-gradient-to-r from-gold-900/20 to-gold-800/20 hover:from-gold-900/30 hover:to-gold-800/30 text-white shadow-lg shadow-gold-900/20"
               onClick={handleGoogleLogin}
               disabled={isLoading}
             >
@@ -115,7 +131,7 @@ const Login = () => {
           <CardFooter className="flex flex-col space-y-4">
             <div className="text-sm text-center text-muted-foreground">
               Don't have an account?{" "}
-              <Link to="/register" className="text-primary hover:underline">
+              <Link to="/register" className="text-purple-400 hover:text-purple-300 hover:underline transition-colors">
                 Create an account
               </Link>
             </div>
