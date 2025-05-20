@@ -7,6 +7,7 @@ type User = {
   id: string;
   email: string;
   name: string;
+  avatar?: string;
 } | null;
 
 type AuthContextType = {
@@ -15,6 +16,7 @@ type AuthContextType = {
   isLoading: boolean;
   login: (email: string, password: string) => Promise<void>;
   register: (name: string, email: string, password: string) => Promise<void>;
+  loginWithGoogle: () => Promise<void>;
   logout: () => void;
 };
 
@@ -101,6 +103,32 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  const loginWithGoogle = async () => {
+    setIsLoading(true);
+    
+    try {
+      // For demo purposes, simulate Google auth
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      const userData = {
+        id: '2',
+        email: 'user@example.com',
+        name: 'Google User',
+        avatar: 'https://randomuser.me/api/portraits/lego/1.jpg'
+      };
+      
+      setUser(userData);
+      localStorage.setItem('mindmate_user', JSON.stringify(userData));
+      toast.success('Signed in with Google!');
+      navigate('/chat');
+    } catch (error) {
+      toast.error('Google sign-in failed. Please try again.');
+      console.error('Google sign-in error:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   const logout = () => {
     setUser(null);
     localStorage.removeItem('mindmate_user');
@@ -114,6 +142,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     isLoading,
     login,
     register,
+    loginWithGoogle,
     logout
   };
 

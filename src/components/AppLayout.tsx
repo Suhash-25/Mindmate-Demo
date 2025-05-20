@@ -8,7 +8,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 const AppLayout = () => {
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full">
+      <div className="flex min-h-screen w-full bg-[#121212] bg-[linear-gradient(to_bottom,rgba(0,0,0,0),rgba(0,0,0,0.6))]">
         <AppSidebar />
         <div className="flex-1 flex flex-col h-screen">
           <ScrollArea className="flex-1">
