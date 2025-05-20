@@ -1,7 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { Heart } from "lucide-react";
+import BrainLogo from "@/components/BrainLogo";
 
 const NotFound = () => {
   const navigate = useNavigate();
@@ -9,7 +9,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-background to-primary/5 p-4">
       <div className="text-center max-w-md animate-fade-in">
-        <Heart className="h-12 w-12 text-primary mx-auto mb-6 animate-pulse-gentle" />
+        <BrainLogo size={60} />
         <h1 className="text-6xl font-bold font-display mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
           404
         </h1>

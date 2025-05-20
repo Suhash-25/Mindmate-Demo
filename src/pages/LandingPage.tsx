@@ -3,7 +3,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import { Heart, MessageCircle, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
+import { MessageCircle, Calendar, ArrowRight, CheckCircle } from 'lucide-react';
+import BrainLogo from '@/components/BrainLogo';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const LandingPage = () => {
       {/* Header */}
       <header className="container mx-auto py-6 px-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
-          <Heart className="h-6 w-6 text-primary" />
+          <BrainLogo size={32} />
           <span className="text-lg font-display font-semibold text-primary">MindMate</span>
         </div>
         <div className="flex gap-4">
@@ -29,8 +30,8 @@ const LandingPage = () => {
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-16 pb-24 md:pt-24 md:pb-32 text-center">
         <div className="max-w-3xl mx-auto animate-fade-in">
-          <div className="inline-block p-3 bg-primary/10 rounded-full mb-6">
-            <Heart className="h-12 w-12 text-primary" />
+          <div className="inline-block mb-6">
+            <BrainLogo size={80} />
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Your Emotional Wellbeing Companion
@@ -102,7 +103,7 @@ const LandingPage = () => {
             <Card className="bg-card/50 backdrop-blur-sm border-secondary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
               <CardContent className="pt-6 pb-6 flex flex-col items-center text-center">
                 <div className="bg-secondary/10 p-3 rounded-full mb-4">
-                  <Heart className="h-6 w-6 text-secondary" />
+                  <BrainLogo size={24} />
                 </div>
                 <h3 className="font-semibold text-xl mb-3">Mood Tracking</h3>
                 <p className="text-muted-foreground">
@@ -130,7 +131,7 @@ const LandingPage = () => {
       <footer className="bg-background py-8 border-t">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-4">
-            <Heart className="h-5 w-5 text-primary" />
+            <BrainLogo size={24} />
             <span className="text-lg font-display font-semibold text-primary">MindMate</span>
           </div>
           <div className="text-sm text-muted-foreground">

@@ -15,11 +15,14 @@ const BrainLogo: React.FC<BrainLogoProps> = ({ size = 60 }) => {
         style={{ width: size + 20, height: size + 20 }}
       ></div>
       
-      {/* Inner circle with gradient */}
+      {/* Main circle */}
       <div 
         className="relative rounded-full flex items-center justify-center bg-gradient-to-br from-black via-black to-purple-900 p-4 border border-purple-500/30 shadow-lg"
         style={{ width: size, height: size }}
       >
+        {/* Inner circle border */}
+        <div className="absolute inset-0 rounded-full border-2 border-purple-400/50"></div>
+        
         {/* Animated rings */}
         <div className="absolute top-0 left-0 w-full h-full rounded-full border border-purple-400/30 animate-pulse-gentle"></div>
         <div className="absolute top-0 left-0 w-full h-full rounded-full border border-gold-400/20 animate-pulse-gentle" style={{ animationDelay: '1s' }}></div>

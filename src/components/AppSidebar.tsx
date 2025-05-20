@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/sidebar';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
+import BrainLogo from './BrainLogo';
 
 const AppSidebar = () => {
   const { state } = useSidebar();
@@ -39,7 +40,7 @@ const AppSidebar = () => {
             MindMate
           </h1>
         ) : (
-          <Heart className="text-primary h-6 w-6" />
+          <BrainLogo size={40} />
         )}
       </div>
 
